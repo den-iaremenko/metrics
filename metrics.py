@@ -15,14 +15,17 @@ class Metrics:
     def get_mem():
         try:
             for key, value in dict(psutil.virtual_memory()._asdict()).items():
-                print(f"{key.capitalize()}: {value},")
+                print(f"{key.capitalize()}: {value}")
+            for key, value in dict(psutil.swap_memory()._asdict()).items():
+                print(f"Swap {key.capitalize()}: {value}")
         except Exception as e:
             print(f"Ups, looks like we face an error while executing {sys.argv[1].upper()} command: \n  {e}")
 
-    def get_cpu(self):
+    @staticmethod
+    def get_cpu():
         try:
             for key, value in dict(psutil.cpu_times(percpu=False)._asdict()).items():
-                print(f"{key.capitalize()}: {value},")
+                print(f"{key.capitalize()}: {value}")
         except Exception as e:
             print(f"Ups, looks like we face an error while executing {sys.argv[1].upper()} command: \n  {e}")
 
