@@ -4,12 +4,27 @@ import sys
 
 class Metrics:
 
+    def __repr__(self):
+        message = """
+        This script is created to display metrics for cpu or mem: 
+        
+        @usage:
+        pipenv run python metrics.py mem
+        
+        @params: 
+        mem - to display memory metrics
+        cpu - to display cpu metrics
+        """
+        print(message)
+        return message
+
     def get_data(self):
         represent_data = {
             "cpu": self.get_cpu,
-            "mem": self.get_mem
+            "mem": self.get_mem,
+            "help": self.__repr__
         }
-        return represent_data.get(sys.argv[1], self.not_valid_arg)()
+        return represent_data.get(sys.argv[1].lower(), self.not_valid_arg)()
 
     @staticmethod
     def get_mem():

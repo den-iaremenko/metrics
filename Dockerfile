@@ -7,6 +7,6 @@ ADD . /app
 RUN pip install pipenv
 RUN pipenv install
 
-ENTRYPOINT ["pipenv", "run", "python", "metrics.py", "mem"]
+ENTRYPOINT ["pipenv", "run", "python", "metrics.py"]
 
-###CMD ["pipenv", "run", "python", "metrics.py", "$1"]
+CMD ["mem"]
